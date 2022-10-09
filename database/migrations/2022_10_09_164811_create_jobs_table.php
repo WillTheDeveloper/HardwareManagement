@@ -19,7 +19,6 @@ return new class extends Migration
             $table->longText('issue');
             $table->enum('type', ['hardware', 'software', 'mixed']);
             $table->enum('device', ['computer', 'laptop', 'phone', 'tablet', 'misc']);
-            $table->boolean('completed');
             $table->timestamps();
         });
     }
