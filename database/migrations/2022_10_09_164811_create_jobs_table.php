@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->text('first');
-            $table->text('second');
-            $table->bigInteger('number');
+            $table->integer('customers_id')->nullable(false);
+            $table->longText('issue');
+            $table->enum('type', ['hardware', 'software', 'mixed']);
+            $table->enum('device', ['computer', 'laptop', 'phone', 'tablet', 'misc']);
+            $table->boolean('completed');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('jobs');
     }
 };
