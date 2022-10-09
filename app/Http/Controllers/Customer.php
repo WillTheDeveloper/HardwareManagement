@@ -8,6 +8,8 @@ class Customer extends Controller
 {
     public function view()
     {
-        return view('customers');
+        return view('customers', [
+            'list' => \App\Models\Customer::query()->orderByDesc('created_at')->paginate(20)
+        ]);
     }
 }
